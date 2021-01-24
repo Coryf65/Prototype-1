@@ -8,8 +8,8 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] private Vector3 cameraOffset = new Vector3(0, 7, -7);
 
-    // Update is called once per frame
-    void Update()
+    // LateUpdate is useful for calculating Camera Positions
+    void LateUpdate()
     {
         // follow the Object, the player
         // Camera Position = Players Position        

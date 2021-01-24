@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour
     private float horizontalInput = 0f;
     private float verticalInput = 0f;
 
-    void Update()
+    // FixedUpdate is useful for physics
+    void FixedUpdate()
     {
         // getting player input
         horizontalInput = Input.GetAxis("Horizontal");
