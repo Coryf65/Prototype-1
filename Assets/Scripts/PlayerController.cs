@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject centerOfMass = null;
     [SerializeField] TextMeshProUGUI spedoText = null;
     [SerializeField] TextMeshProUGUI rpmText = null;
+    [SerializeField] List<WheelCollider> wheels = null;
+    [SerializeField] int wheelsOnGround = 0;
     
     private float horizontalInput = 0f;
     private float verticalInput = 0f;
@@ -32,16 +34,40 @@ public class PlayerController : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
-        // moving a 20 m/s
-        //transform.Translate(Vector3.forward * Time.deltaTime * speed * verticalInput);
+        // only move if we are on the ground
+        if (IsOnGround())
+        {
+            // moving a 20 m/s
+            //transform.Translate(Vector3.forward * Time.deltaTime * speed * verticalInput);
 
-        // do not need to use time for this since it is a force
-        playerRb.AddRelativeForce(Vector3.forward * verticalInput * horsePower); // switched to use Local Coordinates not global
-        //playerRb.centerOfMass = 
-        transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);
+            // do not need to use time for this since it is a force
+            playerRb.AddRelativeForce(Vector3.forward * verticalInput * horsePower); // switched to use Local Coordinates not global
+                                                                                     //playerRb.centerOfMass = 
+            transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);
 
-        SetVehicleSpedometer();
-        SetRpms();
+            SetVehicleSpedometer();
+            SetRpms();
+        }        
+    }
+
+    bool IsOnGround()
+    {
+        wheelsOnGround = 0;
+
+        foreach (WheelCollider wheel in wheels)
+        {
+            if (wheel.isGrounded)
+            {
+                wheelsOnGround++;
+            }
+        }
+
+        if (wheelsOnGround >= 4)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     private void SetRpms()

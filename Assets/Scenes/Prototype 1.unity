@@ -5147,14 +5147,6 @@ PrefabInstance:
       propertyPath: spedoText
       value: 
       objectReference: {fileID: 1236481959}
-    - target: {fileID: 2145924503, guid: 62bc11e768c36df418caad5490dfdd3c, type: 3}
-      propertyPath: horsePower
-      value: 2000
-      objectReference: {fileID: 0}
-    - target: {fileID: 2145924504, guid: 62bc11e768c36df418caad5490dfdd3c, type: 3}
-      propertyPath: m_Mass
-      value: 280
-      objectReference: {fileID: 0}
     - target: {fileID: 8664656073982180387, guid: 62bc11e768c36df418caad5490dfdd3c,
         type: 3}
       propertyPath: m_RootOrder
