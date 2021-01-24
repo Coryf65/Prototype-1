@@ -300,7 +300,7 @@ MonoBehaviour:
   - {fileID: 3360089284945024953}
   - {fileID: 5888844377552447382}
   - {fileID: 3565694896315985405}
-  isOnGround: 0
+  wheelsOnGround: 0
 --- !u!1 &8664656073982434569
 GameObject:
   m_ObjectHideFlags: 0
