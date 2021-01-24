@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 {
     public GameObject objectToFollow = null;
 
-    private Vector3 cameraOffset = new Vector3(0, 7, -7);
+    [SerializeField] private Vector3 cameraOffset = new Vector3(0, 7, -7);
 
     // Update is called once per frame
     void Update()
