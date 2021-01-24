@@ -10,10 +10,12 @@ public class PlayerController : MonoBehaviour
     private float horizontalInput = 0f;
     private float verticalInput = 0f;
     private Rigidbody playerRb = null;
+    [SerializeField] GameObject centerOfMass = null;
 
     private void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        playerRb.centerOfMass = centerOfMass.transform.position;
     }
 
     // FixedUpdate is useful for physics
@@ -27,7 +29,8 @@ public class PlayerController : MonoBehaviour
         //transform.Translate(Vector3.forward * Time.deltaTime * speed * verticalInput);
 
         // do not need to use time for this since it is a force
-        playerRb.AddRelativeForce(Vector3.forward * horsePower * verticalInput); // switched to use Local Coordinates not global
+        playerRb.AddRelativeForce(Vector3.forward * verticalInput * horsePower); // switched to use Local Coordinates not global
+        //playerRb.centerOfMass = 
         transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);
 
     }
